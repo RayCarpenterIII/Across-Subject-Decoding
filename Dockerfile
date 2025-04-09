@@ -1,5 +1,5 @@
 # Use the official NVIDIA CUDA image (we continue with CUDA 12.1)
-FROM nvidia/cuda:12.6-devel-ubuntu22.04
+FROM nvidia/cuda:12.6.0-devel-ubuntu22.04
 
 
 # Install system packages, including pybind11-dev for the necessary headers
