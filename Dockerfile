@@ -1,5 +1,5 @@
 # Use the official NVIDIA CUDA image (we continue with CUDA 12.1)
-FROM nvidia/cuda:12.6.0-devel-ubuntu22.04
+FROM nvidia/cuda:12.1.1-devel-ubuntu22.04
 
 
 # Install system packages, including pybind11-dev for the necessary headers
@@ -42,9 +42,8 @@ RUN conda install -y \
  && conda clean -afy
 
 # Instead of using conda for torch, install PyTorch and CUDA via pip
-RUN pip install torch==2.3.1+cu121 torchvision==0.18.1+cu121 torchaudio==2.3.1+cu121 \
+pip install torch==2.3.1+cu121 torchvision==0.18.1+cu121 torchaudio==2.3.1+cu121 \
     --extra-index-url https://download.pytorch.org/whl/cu121
-
 # Install PyG & its dependencies using wheels built for torch 2.3.1+cu121
 RUN pip install --no-cache-dir torch-scatter -f https://data.pyg.org/whl/torch-2.3.1+cu121.html \
     && pip install --no-cache-dir torch-sparse -f https://data.pyg.org/whl/torch-2.3.1+cu121.html \
